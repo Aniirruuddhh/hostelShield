@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, 
+        initial-scale=1.0" />
+  <title>Hotel Emergency</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/guest.css" />
+</head>
+
+<body>
+  <div class="app-container">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <h1>🏨 Grand Hotel</h1>
+      <span>Room 302</span>
+    </div>
+
+    <!-- CONTENT -->
+    <div class="content-area">
+
+      <!-- STATUS CARD -->
+      <div class="card" id="status-card">
+        <div class="card-title">Current Status</div>
+        <div id="status-text" class="status-safe">
+          ✅ All Clear
+        </div>
+      </div>
+
+      <!-- SOS BUTTON -->
+      <div class="sos-wrapper">
+        <button class="sos-btn" id="sos-btn" onclick="handleSOS()">
+          PRESS FOR<br />HELP
+        </button>
+        <p class="sos-hint">
+          Press only in case of emergency
+        </p>
+      </div>
+
+      <!-- SAFE BUTTON -->
+      <div style="padding: 0 16px;">
+        <button class="btn btn-success" onclick="handleSafe()">
+          ✅ I Am Safe
+        </button>
+      </div>
+
+      <!-- EVACUATION MAP -->
+      <div class="card">
+        <div class="card-title">
+          Your Floor — Floor 3
+        </div>
+        <div class="floor-map" id="guest-map">
+          <div class="room-cell">301</div>
+          <div class="room-cell">302 ◀</div>
+          <div class="room-cell">303</div>
+          <div class="room-cell">304</div>
+          <div class="room-cell">305</div>
+        </div>
+        <div class="exit-info">
+          🚪 Nearest Exit: North Staircase
+        </div>
+      </div>
+
+      <!-- HELP INFO -->
+      <div class="card">
+        <div class="card-title">Emergency Contacts</div>
+        <div class="contact-row">
+          <span>🔒 Security</span>
+          <span>Ext. 100</span>
+        </div>
+        <div class="contact-row">
+          <span>🏥 Medical</span>
+          <span>Ext. 101</span>
+        </div>
+        <div class="contact-row">
+          <span>🔥 Fire</span>
+          <span>Ext. 102</span>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <script src="js/api.js"></script>
+  <script src="js/guest.js"></script>
+</body>
+
+</html>

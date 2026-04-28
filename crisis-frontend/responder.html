@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, 
+        initial-scale=1.0" />
+  <title>First Responder</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/responder.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <h1>🚨 First Responder</h1>
+      <span class="dept-badge" id="dept-badge">
+        Medical
+      </span>
+    </div>
+
+    <!-- DEPARTMENT SELECTOR -->
+    <div class="dept-selector">
+      <button class="dept-btn" 
+              onclick="setDept('Police')"
+              id="dept-Police">
+        🚔 Police
+      </button>
+      <button class="dept-btn active" 
+              onclick="setDept('Medical')"
+              id="dept-Medical">
+        🚑 Medical
+      </button>
+      <button class="dept-btn" 
+              onclick="setDept('Fire')"
+              id="dept-Fire">
+        🚒 Fire
+      </button>
+    </div>
+
+    <div class="content-area">
+
+      <!-- NO EMERGENCY STATE -->
+      <div id="no-emergency" class="card">
+        <div class="empty-state">
+          🟢 No Active Emergencies
+          <p style="font-size:12px; 
+                    margin-top:8px;
+                    color:#9E9E9E;">
+            Monitoring hotel systems...
+          </p>
+        </div>
+      </div>
+
+      <!-- ACTIVE EMERGENCY CARD -->
+      <div id="emergency-card" 
+           class="emergency-card" 
+           style="display:none">
+
+        <div class="emergency-header">
+          <span class="emergency-type" 
+                id="emergency-type">
+            PANIC
+          </span>
+          <span class="emergency-time" 
+                id="emergency-time">
+            0m ago
+          </span>
+        </div>
+
+        <div class="emergency-room" 
+             id="emergency-room">
+          302
+        </div>
+
+        <div class="emergency-floor">
+          Floor 3 — North Wing
+        </div>
+
+        <div class="emergency-meta">
+          <div class="meta-item">
+            <span class="meta-label">
+              Assigned To
+            </span>
+            <span class="meta-value" 
+                  id="emergency-assigned">
+              Security
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">
+              Status
+            </span>
+            <span class="meta-value" 
+                  id="emergency-status">
+              Active
+            </span>
+          </div>
+          <div class="meta-item">
+            <span class="meta-label">
+              Alert ID
+            </span>
+            <span class="meta-value" 
+                  id="emergency-id">
+              #001
+            </span>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- HOTEL MAP -->
+      <div class="card" id="map-card">
+        <div class="card-title">
+          Hotel Floor Map
+        </div>
+
+        <div class="floor-label">Floor 3</div>
+        <div class="floor-map" id="resp-map-floor3">
+          <div class="room-cell" id="resp-room-301">301</div>
+          <div class="room-cell" id="resp-room-302">302</div>
+          <div class="room-cell" id="resp-room-303">303</div>
+          <div class="room-cell" id="resp-room-304">304</div>
+          <div class="room-cell" id="resp-room-305">305</div>
+        </div>
+
+        <div class="floor-label">Floor 2</div>
+        <div class="floor-map" id="resp-map-floor2">
+          <div class="room-cell" id="resp-room-201">201</div>
+          <div class="room-cell" id="resp-room-202">202</div>
+          <div class="room-cell" id="resp-room-203">203</div>
+          <div class="room-cell" id="resp-room-204">204</div>
+          <div class="room-cell" id="resp-room-205">205</div>
+        </div>
+
+        <div class="floor-label">Floor 1</div>
+        <div class="floor-map" id="resp-map-floor1">
+          <div class="room-cell" id="resp-room-101">101</div>
+          <div class="room-cell" id="resp-room-102">102</div>
+          <div class="room-cell" id="resp-room-103">103</div>
+          <div class="room-cell" id="resp-room-104">104</div>
+          <div class="room-cell" id="resp-room-105">105</div>
+        </div>
+
+        <!-- ENTRANCE INFO -->
+        <div class="entrance-info">
+          🚪 Main Entrance: South Gate
+          &nbsp;|&nbsp;
+          🚑 Emergency Bay: North Side
+        </div>
+
+      </div>
+
+      <!-- LIVE STATUS FEED -->
+      <div class="card">
+        <div class="card-title">
+          Live Status Feed
+        </div>
+        <div id="status-feed">
+          <div class="empty-state">
+            Waiting for updates...
+          </div>
+        </div>
+      </div>
+
+      <!-- ACTION BUTTONS -->
+      <div class="card" id="action-card"
+           style="display:none">
+        <div class="card-title">
+          Responder Actions
+        </div>
+        <button class="btn btn-outline"
+                onclick="responderAction('responding')">
+          📍 Responders On Scene
+        </button>
+        <button class="btn btn-success"
+                onclick="responderAction('resolved')">
+          ✅ Emergency Resolved
+        </button>
+        <button class="btn btn-danger"
+                style="margin-top:8px"
+                onclick="requestBackup()">
+          🆘 Request Backup
+        </button>
+      </div>
+
+      <!-- HOTEL INFO -->
+      <div class="card">
+        <div class="card-title">Hotel Information</div>
+        <div class="hotel-info-row">
+          <span>🏨 Property</span>
+          <span>Grand Hotel</span>
+        </div>
+        <div class="hotel-info-row">
+          <span>📍 Address</span>
+          <span>MG Road, Jabalpur</span>
+        </div>
+        <div class="hotel-info-row">
+          <span>🏢 Floors</span>
+          <span>3 Floors, 15 Rooms</span>
+        </div>
+        <div class="hotel-info-row">
+          <span>📞 Manager</span>
+          <span>+91 98765 43210</span>
+        </div>
+        <div class="hotel-info-row">
+          <span>🔒 Security Desk</span>
+          <span>Ext. 100</span>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/responder.js"></script>
+</body>
+</html>

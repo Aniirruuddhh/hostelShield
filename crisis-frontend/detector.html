@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, 
+        initial-scale=1.0" />
+  <title>Auto Detector</title>
+  <link rel="stylesheet" href="css/main.css" />
+  <link rel="stylesheet" href="css/detector.css" />
+</head>
+<body>
+  <div class="app-container">
+
+    <!-- TOP BAR -->
+    <div class="top-bar">
+      <h1>🎥 Auto Detector</h1>
+      <span class="detector-badge" id="detector-badge">
+        Standby
+      </span>
+    </div>
+
+    <div class="content-area">
+
+      <!-- STATUS CARD -->
+      <div class="card">
+        <div class="card-title">Detection Status</div>
+        <div class="status-row">
+          <div class="status-item">
+            <div class="status-dot" id="motion-dot">
+            </div>
+            <span>Motion</span>
+          </div>
+          <div class="status-item">
+            <div class="status-dot" id="audio-dot">
+            </div>
+            <span>Audio</span>
+          </div>
+          <div class="status-item">
+            <div class="status-dot" id="alert-dot">
+            </div>
+            <span>Alert</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- CAMERA FEED -->
+      <div class="card">
+        <div class="card-title">
+          Live Camera Feed — Room 302
+        </div>
+        <div class="camera-wrapper">
+          <video id="camera-feed" 
+                 autoplay 
+                 muted 
+                 playsinline>
+          </video>
+          <canvas id="motion-canvas" 
+                  style="display:none">
+          </canvas>
+          <div class="camera-overlay" 
+               id="camera-overlay">
+            📷 Camera Off
+          </div>
+          <div class="motion-indicator" 
+               id="motion-indicator">
+            ⚠️ MOTION DETECTED
+          </div>
+        </div>
+
+        <!-- MOTION METER -->
+        <div class="meter-label">
+          Motion Level
+        </div>
+        <div class="meter-track">
+          <div class="meter-fill" 
+               id="motion-meter">
+          </div>
+        </div>
+        <div class="meter-value" 
+             id="motion-value">
+          0%
+        </div>
+      </div>
+
+      <!-- CONTROLS -->
+      <div class="card">
+        <div class="card-title">
+          Detector Controls
+        </div>
+
+        <!-- ROOM SELECTOR -->
+        <div class="control-row">
+          <label class="control-label">
+            Monitoring Room
+          </label>
+          <select class="control-select" 
+                  id="room-select">
+            <option value="101">Room 101</option>
+            <option value="102">Room 102</option>
+            <option value="201">Room 201</option>
+            <option value="202">Room 202</option>
+            <option value="301">Room 301</option>
+            <option value="302" selected>
+              Room 302
+            </option>
+            <option value="303">Room 303</option>
+          </select>
+        </div>
+
+        <!-- SENSITIVITY -->
+        <div class="control-row">
+          <label class="control-label">
+            Sensitivity: 
+            <span id="sensitivity-value">20</span>%
+          </label>
+          <input type="range" 
+                 id="sensitivity-slider"
+                 min="5" max="50" value="20"
+                 class="slider"
+                 oninput="updateSensitivity(this.value)"/>
+        </div>
+
+        <!-- COOLDOWN -->
+        <div class="control-row">
+          <label class="control-label">
+            Alert Cooldown: 30 seconds
+          </label>
+        </div>
+
+        <!-- START STOP BUTTONS -->
+        <button class="btn btn-danger" 
+                id="start-btn"
+                onclick="startDetection()">
+          🎥 Start Detection
+        </button>
+        <button class="btn btn-grey" 
+                id="stop-btn"
+                onclick="stopDetection()"
+                disabled>
+          ⏹ Stop Detection
+        </button>
+
+      </div>
+
+      <!-- ALERT LOG -->
+      <div class="card">
+        <div class="card-title">
+          Auto Detection Log
+        </div>
+        <div id="detection-log">
+          <div class="empty-state">
+            No detections yet
+          </div>
+        </div>
+      </div>
+
+      <!-- SIMULATION PANEL -->
+      <div class="card">
+        <div class="card-title">
+          Manual Simulation Panel
+        </div>
+        <div class="sim-grid">
+          <button class="sim-btn fire"
+                  onclick="simulate('fire')">
+            🔥 Fire
+          </button>
+          <button class="sim-btn gas"
+                  onclick="simulate('gas')">
+            💨 Gas Leak
+          </button>
+          <button class="sim-btn motion"
+                  onclick="simulate('motion')">
+            🏃 Motion
+          </button>
+          <button class="sim-btn glass"
+                  onclick="simulate('glass_break')">
+            🔊 Glass Break
+          </button>
+          <button class="sim-btn medical"
+                  onclick="simulate('medical')">
+            🏥 Medical
+          </button>
+          <button class="sim-btn panic"
+                  onclick="simulate('panic')">
+            🚨 Panic
+          </button>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+  <script src="js/api.js"></script>
+  <script src="js/detector.js"></script>
+</body>
+</html>

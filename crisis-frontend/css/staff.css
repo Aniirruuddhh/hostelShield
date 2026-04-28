@@ -1,0 +1,183 @@
+/* MENU BUTTON */
+.menu-btn {
+  background: transparent;
+  border: none;
+  color: #FFFFFF;
+  font-size: 22px;
+  cursor: pointer;
+  padding: 4px 8px;
+}
+
+/* ROLE BADGE */
+.role-badge {
+  background: #FFFFFF;
+  color: #D32F2F;
+  font-size: 11px;
+  font-weight: 700;
+  padding: 4px 10px;
+  border-radius: 20px;
+}
+
+/* TAB CONTENT */
+.tab-content {
+  display: none;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+/* FLOOR LABEL */
+.floor-label {
+  font-size: 11px;
+  font-weight: 600;
+  color: #9E9E9E;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  margin: 10px 0 4px;
+}
+
+/* MAP LEGEND */
+.map-legend {
+  display: flex;
+  gap: 16px;
+  margin-top: 12px;
+  justify-content: center;
+}
+
+.legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #757575;
+}
+
+.legend-dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+}
+
+.legend-dot.grey { background: #EEEEEE; }
+.legend-dot.red  { background: #D32F2F; }
+.legend-dot.green { background: #388E3C; }
+
+/* ALERT CARDS */
+.alert-card {
+  background: #FFFFFF;
+  border-radius: 12px;
+  margin: 10px 16px;
+  padding: 16px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+  border-left: 4px solid #D32F2F;
+}
+
+.alert-room {
+  font-size: 32px;
+  font-weight: 800;
+  color: #D32F2F;
+}
+
+.alert-meta {
+  font-size: 12px;
+  color: #757575;
+  margin: 4px 0 12px;
+}
+
+.alert-actions {
+  display: flex;
+  gap: 8px;
+}
+
+.alert-actions .btn {
+  width: auto;
+  flex: 1;
+  padding: 10px;
+  font-size: 12px;
+  margin-top: 0;
+}
+
+/* RECENT ACTIVITY */
+.activity-item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0;
+  border-bottom: 1px solid #F5F5F5;
+  font-size: 13px;
+}
+
+.activity-item:last-child {
+  border-bottom: none;
+}
+
+.activity-room {
+  font-weight: 700;
+  color: #D32F2F;
+}
+
+/* EMPTY STATE */
+.empty-state {
+  text-align: center;
+  padding: 24px;
+  color: #9E9E9E;
+  font-size: 14px;
+}
+
+/* BAR CHART */
+.bar-chart {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  padding: 8px 0;
+}
+
+.bar-row {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.bar-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #757575;
+  width: 50px;
+}
+
+.bar-track {
+  flex: 1;
+  background: #EEEEEE;
+  border-radius: 4px;
+  height: 12px;
+  overflow: hidden;
+}
+
+.bar-fill {
+  height: 100%;
+  background: #D32F2F;
+  border-radius: 4px;
+  transition: width 0.5s ease;
+}
+
+.bar-count {
+  font-size: 12px;
+  font-weight: 700;
+  color: #D32F2F;
+  width: 20px;
+  text-align: right;
+}
+
+/* TYPE BREAKDOWN */
+.type-row {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px 0;
+  border-bottom: 1px solid #F5F5F5;
+  font-size: 13px;
+}
+
+.type-row:last-child {
+  border-bottom: none;
+}
